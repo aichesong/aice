@@ -160,5 +160,51 @@ class Ad extends Base{
         $request_url = U($request_url,array('edit_ad'=>1));
         echo "<script>location.href='".$request_url."';</script>";
         exit;                
-    }        
+    }
+
+    public function articleList(){
+        $new = M('news')->select();
+        $this->assign('new',$new);
+        return $this->fetch();
+    }
+
+    public function articleAdd(){
+        $admin_info = getAdminInfo(session('admin_id'));
+        if(IS_POST){
+            $arr=[
+                'title' => $_POST['title'],
+                'is_delete' => $_POST['is_open'],
+                'creator' => $admin_info['user_name'],
+                'message' => $_POST['content'],
+                'create_time'      =>time()
+
+            ];
+            $a=M('news')->add($arr);
+            if($a){
+                $this->success('操作成功',U('Admin/Ad/articleList'));
+            }else{
+                $this->success('操作失败',U('Admin/Ad/articleList'));
+            }
+        }
+        return $this->fetch();
+    }
+
+    public function articleEdit(){
+        $article=M('news')->where('id','=',$_GET['id'])->find();
+        if(IS_POST){
+            $arr=[
+                'title' => $_POST['title'],
+                'is_delete' => $_POST['is_open'],
+                'message' => $_POST['content'],
+            ];
+            $a=M('news')->where('id','=',$_GET['id'])->save($arr);
+            if($a){
+                $this->success('操作成功',U('Admin/Ad/articleList'));
+            }else{
+                $this->success('操作失败',U('Admin/Ad/articleList'));
+            }
+        }
+        $this->assign('article',$article);
+        return $this->fetch();
+    }
 }
