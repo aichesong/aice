@@ -51,7 +51,7 @@ class   Version extends  Base {
 
         $versonData =   Db::table('tp_version')
                             ->where('type',$type)
-                            ->field('version_id, version, url')
+                            ->field('version_id, version, url ,is_update')
                             ->order('update_time desc')
                             ->limit(1)
                             ->find();
