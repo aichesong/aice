@@ -162,7 +162,7 @@ class Ad extends Base{
         exit;                
     }
 
-    public function articleList(){
+    public function newsList(){
         $new = M('news')->select();
         $this->assign('new',$new);
         return $this->fetch();
@@ -181,9 +181,9 @@ class Ad extends Base{
             ];
             $a=M('news')->add($arr);
             if($a){
-                $this->success('操作成功',U('Admin/Ad/articleList'));
+                $this->success('操作成功',U('Admin/Ad/newsList'));
             }else{
-                $this->success('操作失败',U('Admin/Ad/articleList'));
+                $this->success('操作失败',U('Admin/Ad/newsList'));
             }
         }
         return $this->fetch();
@@ -199,9 +199,9 @@ class Ad extends Base{
             ];
             $a=M('news')->where('id','=',$_GET['id'])->save($arr);
             if($a){
-                $this->success('操作成功',U('Admin/Ad/articleList'));
+                $this->success('操作成功',U('Admin/Ad/newsList'));
             }else{
-                $this->success('操作失败',U('Admin/Ad/articleList'));
+                $this->success('操作失败',U('Admin/Ad/newsList'));
             }
         }
         $this->assign('article',$article);

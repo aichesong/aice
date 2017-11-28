@@ -79,7 +79,7 @@
       <div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
         <table>
           <tbody>
-          <foreach name="new" item="vo">
+          <foreach name="$new" item="vo">
             <tr>
               <td class="sign">
                 <div style="width: 24px;"><i class="ico-check"></i></div>
@@ -107,7 +107,7 @@
               </td>
               <td align="center" class="handle">
                 <div style="text-align: center; width: 150px;">
-                  <a href="{:U('ad/articleEdit',array('id'=>$vo['id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+                  <a href="{:U('Ad/articleEdit',array('id'=>$vo['id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
                 </div>
               </td>
               <td align="" class="" style="width: 100%;">

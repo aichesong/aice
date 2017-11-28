@@ -164,7 +164,6 @@
                 <dd class="opt">
                     <div>
                         <select   name="inst_id" class="input-sm" class="form-control" title="请选择所属机构">
-                            <option value="">所属机构</option>
                             <volist name="sql" id="list">
                                 <option value="{$list['inst_id']}" <if condition="$goodsInfo['inst_id'] eq $list['inst_id']">selected</if>>{$list['inst_name']}</option>
                             </volist>
@@ -270,7 +269,7 @@
             </dl>  
             <dl class="row">
                 <dt class="tit">
-                    <label for="record_no">爱车送销售价   </label>
+                    <label for="record_no">爱车送销售价</label>
                 </dt>
                 <dd class="opt">
                     <input type="text" value="{$goodsInfo.shop_price}" name="shop_price" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
@@ -320,37 +319,6 @@
                     <p class="notic">请上传图片格式文件</p>
                 </dd>
             </dl>
-
-            <!--<dl class="row">-->
-                <!--<dt class="tit">-->
-                    <!--<label for="record_no">商品重量</label>-->
-                <!--</dt>-->
-                <!--<dd class="opt">-->
-                    <!--<input type="text" value="{$goodsInfo.weight}" name="weight" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />-->
-                    <!--<span class="err" id="err_weight" style="color:#F00; display:none;"></span>-->
-                    <!--<p class="notic"> 务必设置商品重量, 用于计算物流费.以克为单位</p>-->
-                <!--</dd>-->
-            <!--</dl>  -->
-
-
-
-	  <!--<dl class="row">-->
-        <!--<dt class="tit">-->
-          <!--<label>是否包邮</label>-->
-        <!--</dt>-->
-        <!--<dd class="opt">-->
-          <!--<div class="onoff">-->
-            <!--<label for="is_free_shipping1" class="cb-enable <if condition="$goodsInfo[is_free_shipping] eq 1">selected</if>">是</label>-->
-            <!--<label for="is_free_shipping0" class="cb-disable <if condition="$goodsInfo[is_free_shipping] eq 0">selected</if>">否</label>-->
-            <!--<input id="is_free_shipping1" name="is_free_shipping" value="1" type="radio" <if condition="$goodsInfo[is_free_shipping] eq 1"> checked="checked"</if>>-->
-            <!--<input id="is_free_shipping0" name="is_free_shipping" value="0" type="radio" <if condition="$goodsInfo[is_free_shipping] eq 0"> checked="checked"</if>>-->
-          <!--</div>-->
-          <!--<p class="notic"></p>-->
-        <!--</dd>-->
-      <!--</dl>-->
-
-
-
             <dl class="row">
                 <dt class="tit">
                     <label for="record_no">总库存</label>
