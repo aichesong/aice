@@ -131,7 +131,7 @@
                 <dd class="opt">
                     <div>
                         <select   name="inst_id" class="input-sm" class="form-control" title="请选择所属机构">
-                            <option value="">所属机构</option>
+                            <option value="0">所属机构</option>
                             <volist name="sql" id="list">
                                 <option value="{$list['inst_id']}" <if condition="$user['inst_id'] eq $list['inst_id']">selected</if>>{$list['inst_name']}</option>
                             </volist>

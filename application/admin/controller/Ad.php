@@ -207,4 +207,5 @@ class Ad extends Base{
         $this->assign('article',$article);
         return $this->fetch();
     }
+
 }

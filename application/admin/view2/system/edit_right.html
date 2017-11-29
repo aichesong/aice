@@ -47,6 +47,7 @@
 					<select class="small form-control" id="controller" onblur="get_act_list(this)">
 						<option value="">选择控制器</option>
 						<foreach name="planList" item="vo">
+							<?php var_dump($vo);?>
 							<option value="{$vo}">{$vo}</option>
 						</foreach>
 					</select>

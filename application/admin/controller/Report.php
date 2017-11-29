@@ -104,13 +104,19 @@ class Report extends Base{
                 'open_status'   => $_POST['open_status'],
                 'add_time'      =>time()
             ];
-            if($_POST['province'] != null){
-                $arr['province'] = $_POST['province'];
+            if($_POST['province'] == null ){
+                $arr['province'] = 0;
+            }else{
+                $arr['province']=$_POST['province'];
             }
-            if($_POST['city'] != null){
-                $arr['city'] = $_POST['city'];
+            if($_POST['city'] == null){
+                $arr['city'] =0;
+            }else{
+                $arr['city'] =$_POST['city'];
             }
-            if($_POST['area'] != null){
+            if($_POST['area'] == null || $_POST['area'] =='选择区域'){
+                $arr['area'] =0;
+            }else{
                 $arr['area'] = $_POST['area'];
             }
             $a=M('inst')->where('inst_id','=',$_POST['inst_id'])->save($arr);
@@ -156,13 +162,19 @@ class Report extends Base{
                 'open_status'   => $_POST['open_status'],
                 'add_time'      =>time()
             ];
-            if($_POST['province'] != null){
-                $arr['province'] = $_POST['province'];
+            if($_POST['province'] == null ){
+                $arr['province'] = 0;
+            }else{
+                $arr['province']=$_POST['province'];
             }
-            if($_POST['city'] != null){
-                $arr['city'] = $_POST['city'];
+            if($_POST['city'] == null){
+                $arr['city'] =0;
+            }else{
+                $arr['city'] =$_POST['city'];
             }
-            if($_POST['area'] != null){
+            if($_POST['area'] == null || $_POST['area'] =='选择区域'){
+                $arr['area'] =0;
+            }else{
                 $arr['area'] = $_POST['area'];
             }
             $a=M('inst')->add($arr);
@@ -182,8 +194,7 @@ class Report extends Base{
 
     public function referrer(){
         //机构
-
-        $sql = M('inst a')->join('referrer b','a.inst_id = b.inst_id')->select();
+        $sql = M('inst a')->join('referrer b','a.inst_id = b.inst_id')->join('users c','b.user_id = c.user_id')->select();
         $this->assign('ref',$sql);
         return $this->fetch();
     }
@@ -210,7 +221,7 @@ class Report extends Base{
     public  function refEdit(){
         //机构
         $sql = M('inst')->select();
-        $ref=M('referrer')->where('id','=',$_GET['id'])->find();
+        $ref=M('inst a')->join('referrer b','a.inst_id = b.inst_id')->join('users c','b.user_id = c.user_id')->where('id','=',$_GET['id'])->find();
         if(IS_POST){
             $arr=[
                 'inst_id' => $_POST['inst_id'],

@@ -244,6 +244,7 @@ class System extends Base
      	$advContrl = get_class_methods("app\\admin\\controller\\".str_replace('.php','',$control));
      	$baseContrl = get_class_methods('app\admin\controller\Base');
      	$diffArray  = array_diff($advContrl,$baseContrl);
+
      	$html = '';
      	foreach ($diffArray as $val){
      		$html .= "<option value='".$val."'>".$val."</option>";

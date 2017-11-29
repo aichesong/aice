@@ -221,10 +221,16 @@ class User extends Base {
         //机构
         $sql = M('inst')->select();
         $uid = I('get.id');
-        $user = D('users')->where(array('user_id'=>$uid))->find();
+        $useres = D('users a')->join('referrer b','a.user_id = b.user_id')->where(array('a.user_id'=>$uid))->find();
+        if($useres !=NULL){
+            $user  = $useres;
+        }else{
+            $user = D('users ')->where(array('user_id'=>$uid))->find();
+        }
         if(!$user)
             exit($this->error('会员不存在'));
         if(IS_POST){
+            var_dump($_POST);die;
             //  会员信息编辑
             $password = I('post.password');
             $password2 = I('post.password2');
@@ -248,7 +254,17 @@ class User extends Base {
                 $c= M('users') ->where('mobile','=',$leader_mobile)->find();
                 $_POST['uid']  = $c['user_id'];
             }
+
             $row = M('users')->where(array('user_id'=>$uid))->save($_POST);
+            if($_POST['inst_id'] >0){
+                $arr=[
+                    'inst_id'=>$_POST['inst_id'],
+                    'user_id'=>$uid,
+                    'add_time'=>time(),
+                    'open_status'=>1
+                ];
+                M('referrer')->save($arr);
+            }
             if($row)
                 exit($this->success('修改成功'));
             exit($this->error('未作内容修改或修改失败'));
