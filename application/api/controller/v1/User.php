@@ -227,6 +227,70 @@ class User  extends   Base {
     }
 
 
+//    推荐注册
+    public  function recomregist(){
+
+        /*
+         *
+         *   "mobile" :  "15685214657" ,
+    "nickname" : "李贤立",
+    "password" : "yuliang123",
+    "id_card" : "430528198909020530"
+         * */
+        $postdata = request()->post() ;
+        if(!isset($postdata['nickname'])  ||  !isset($postdata['mobile'])   || !isset($postdata['password'])  ||  !isset($postdata['id_card'])  ){
+            $e = new  ParameterException(array(
+                'msg' => '缺少必填参数' ,
+                'errorCode' => '391016',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppNotEmpty($postdata['mobile'])){
+            $e = new  ParameterException(array(
+                'msg' => '手机号码不能为空' ,
+                'errorCode' => '391020',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppNotEmpty($postdata['password'])){
+            $e = new  ParameterException(array(
+                'msg' => '密码不能为空' ,
+                'errorCode' => '391015',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppNotEmpty($postdata['nickname'])){
+            $e = new  ParameterException(array(
+                'msg' => '用户名不能为空' ,
+                'errorCode' => '391017',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppNotEmpty($postdata['id_card'])){
+            $e = new  ParameterException(array(
+                'msg' => '身份证号码不能为空' ,
+                'errorCode' => '391018',
+            ));
+            throw  $e ;
+        }
+
+        if(!isIdentify($postdata['id_card'])){
+            $e = new  ParameterException(array(
+                'msg' => '身份证号码格式错误' ,
+                'errorCode' => '391019',
+            ));
+            throw  $e ;
+        }
+
+
+
+    }
+
+
 //    用户登录接口
     public   function  login(){
 

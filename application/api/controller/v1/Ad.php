@@ -7,7 +7,7 @@ use  app\lib\exception\ParameterException ;
 class   Ad  extends  Base {
 
     //广告页接口
-    public  function   getadlist($orderby){
+    public  function   getlist($orderby){
           //判断
           $is_empty =  isAppNotEmpty($orderby) ;
           if(!$is_empty){
@@ -33,14 +33,14 @@ class   Ad  extends  Base {
         if(!empty($data)){
             $e = new  ParameterException(array(
                 'msg' => 'success' ,
-                'errorCode' => '1',
+                'errorCode' => '0',
                 'datas' => $data ,
             ));
             throw  $e ;
         }else{
             $e = new  ParameterException(array(
                 'msg' => 'success' ,
-                'errorCode' => '1',
+                'errorCode' => '0',
                 'datas' => null ,
             ));
             throw  $e ;
