@@ -32,6 +32,7 @@ Route::post('api/:version/user/password/reset','api/:version.User/reset');
 Route::post('api/:version/user/feedback','api/:version.FeedBack/feedback');   //消息反馈
 Route::get('api/:version/user/:user_id/getuserinfo','api/:version.User/getUserInfo');    //获取用户信息接口
 Route::put('api/:version/user/:user_id/updatesex','api/:version.User/updateSex');    //修改用户性别
+Route::put('api/:version/user/:user_id/updateregion','api/:version.User/updateRegion');    //修改用户地区
 Route::get('api/:version/user/:user_id/subordinates','api/:version.User/getSubordinates');    //我的下级
 Route::put('api/:version/user/:user_id/quit','api/:version.User/quit');    //退出登录接口
 Route::post('api/:version/user/:user_id/uploadimg','api/:version.User/uploadimg');
@@ -44,12 +45,8 @@ Route::get('api/:version/ad/getlist','api/:version.Ad/getlist');
 Route::get('api/:version/user/news/getnews','api/:version.News/getnews');   //查询我的消息列表
 Route::post('api/:version/user/recomregist','api/:version.User/recomregist');   //推荐注册
 
-
 Route::get('api/:version/order/getnews','api/:version.Order/getnews');   //获取最新快报接口
 Route::get('api/:version/good/gethots','api/:version.Good/gethots');   //获取热门推荐接口
-
-
-
 
 Route::get('api/:version/good/:good_id/getdetails','api/:version.Good/getdetails');   //获取商品详情接口
 
